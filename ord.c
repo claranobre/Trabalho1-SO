@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 5000000
+#define MAX 500000
 
 #define SIZE_MIN   5000
 #define SIZE_STEP  5000
-#define SIZE_MAX  20000
+#define SIZE_MAX  500000
 
-#define CICLES 6
+#define CICLES 10
 
 #define xorswap(a, b) ((a)^=(b),(b)^=(a),(a)^=(b))
 
@@ -16,7 +16,7 @@ int nswap = 0;
 int ncompare = 0;
 
 int * vector_create(size_t size) {
-    int * vector = NULL;
+    int *vector = NULL;
     int i = 0;
 
     if ((vector = malloc(sizeof(int) * size)) != NULL) {
@@ -110,6 +110,37 @@ void sort_selection(int * vector, size_t size) {
     }
 }
 
+void quick_sort(int * vector, int left, int right) {
+    int i, j, x, y;
+     
+    i = left;
+    j = right;
+    x = vector[(left + right) / 2];
+     
+    while(i <= j) {
+        while(vector[i] < x && i < right) {
+            i++;
+        }
+        while(vector[j] > x && j > left) {
+            j--;
+        }
+        if(i <= j) {
+            y = vector[i];
+            vector[i] = vector[j];
+            vector[j] = y;
+            i++;
+            j--;
+        }
+    }
+     
+    if(j > left) {
+        quick_sort(vector, left, j);
+    }
+    if(i < right) {
+        quick_sort(vector, i, right);
+    }
+}
+
 int main(void) {
     int * vector, size, cycle, cycles;
     struct timespec start, end;
@@ -118,6 +149,7 @@ int main(void) {
     srand(time(NULL));
 
     for (size = SIZE_MIN; size <= SIZE_MAX; size += SIZE_STEP) {
+        /*
         // BUBBLE SORT
         printf("\nBUBBLE SORT - %d cycles with %d elements\n", CICLES, size);
 
@@ -165,7 +197,33 @@ int main(void) {
         }
 
         printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
+        */
 
+        // QUICK SORT
+        printf("\nQUICK SORT - %d cycles with %d elements\n", CICLES, size);
+
+        for (cycle = 0, cycles = 0, sum = 0.0; cycle < CICLES; cycle++){
+            printf("%do cycle sorting of a vector with %d elements with the insertion sort algorithm : ", cycle, size);
+
+            if ((vector = vector_create(size)) != NULL){
+
+                start = time_get();
+                quick_sort(vector,size,size);
+                end = time_get();
+                vector_destroy(&vector);
+
+                cycles++;
+                sum += time_diff(start, end);
+
+            printf("%lf seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
+            }
+            else{
+                printf(" error allocating %d bytes of memory\n", (int) (size * sizeof(int)));
+            }
+        }
+        printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
+        
+        /*
         // SELECTION SORT
         printf("\nSELECTION SORT - %d cycles with %d elements\n", CICLES, size);
 
@@ -189,7 +247,8 @@ int main(void) {
         }
 
         printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a selection sort algorithm\n", size, sum / cycles);
+    */
     }
 
     return 0;
-}
+}     
