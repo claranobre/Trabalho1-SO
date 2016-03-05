@@ -149,7 +149,7 @@ int main(void) {
     srand(time(NULL));
 
     for (size = SIZE_MIN; size <= SIZE_MAX; size += SIZE_STEP) {
-        /*
+        
         // BUBBLE SORT
         printf("\nBUBBLE SORT - %d cycles with %d elements\n", CICLES, size);
 
@@ -174,6 +174,7 @@ int main(void) {
 
         printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a booble sort algorithm\n", size, sum / cycles);
 
+        /*
         // INSERTION SORT
         printf("\nINSERTION SORT - %d cycles with %d elements\n", CICLES, size);
 
@@ -223,7 +224,6 @@ int main(void) {
         }
         printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
         
-        /*
         // SELECTION SORT
         printf("\nSELECTION SORT - %d cycles with %d elements\n", CICLES, size);
 
@@ -247,7 +247,6 @@ int main(void) {
         }
 
         printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a selection sort algorithm\n", size, sum / cycles);
-    */
     }
 
     return 0;
