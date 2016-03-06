@@ -34,9 +34,9 @@ void vector_destroy(int ** vector) {
     }
 }
 
+//char *asctime(const struct timespec* ts){
 struct timespec time_get(void) {
-    time_t timespec = ts (NULL);
-    //struct timespec ts;
+    struct timespec ts;
 
     clock_gettime(CLOCK_REALTIME, &ts);
 
@@ -178,26 +178,20 @@ int main(void) {
         /*
         // INSERTION SORT
         printf("\nINSERTION SORT - %d cycles with %d elements\n", CICLES, size);
-
         for (cycle = 0, cycles = 0, sum = 0.0; cycle < CICLES; cycle++) {
             printf("%do cycle sorting of a vector with %d elements with the insertion sort algorithm : ", cycle, size);
-
             if ((vector = vector_create(size)) != NULL) {
-
                 start = time_get();
                 sort_insertion(vector, size);
                 end = time_get();
                 vector_destroy(&vector);
-
                 cycles++;
                 sum += time_diff(start, end);
-
                 printf("%d seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
             } else {
                 printf(" error allocating %d bytes of memory\n", (int) (size * sizeof(int)));
             }
         }
-
         printf("The sorting of a vector with %d elements took in average %d seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
         */
 
