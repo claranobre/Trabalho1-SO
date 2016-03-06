@@ -35,7 +35,8 @@ void vector_destroy(int ** vector) {
 }
 
 struct timespec time_get(void) {
-    struct timespec ts;
+    time_t timespec = ts (NULL);
+    //struct timespec ts;
 
     clock_gettime(CLOCK_REALTIME, &ts);
 
