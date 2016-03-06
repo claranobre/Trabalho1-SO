@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 500000
+#define MAX 300000
 
-#define SIZE_MIN   5000
-#define SIZE_STEP  5000
-#define SIZE_MAX  500000
+#define SIZE_MIN   300000
+#define SIZE_STEP  300000
+#define SIZE_MAX   300000
 
 #define CICLES 10
 
