@@ -42,11 +42,11 @@ struct timespec time_get(void) {
     return ts;
 }
 
-double time_diff(struct timespec start, struct timespec end) {
-    double diff = 0;
+int time_diff(struct timespec start, struct timespec end) {
+    int diff = 0;
 
-    diff += end.tv_sec - start.tv_sec - 1;
-    diff += (1000000000 - (double)start.tv_nsec + (double)end.tv_nsec) / 1000000000;
+    diff += end.tv_sec - start.tv_sec;
+    //diff += ((int)start.tv_nsec + (int)end.tv_nsec);
 
     return diff;
 }
@@ -144,7 +144,7 @@ void quick_sort(int * vector, int left, int right) {
 int main(void) {
     int * vector, size, cycle, cycles;
     struct timespec start, end;
-    double sum;
+    int sum;
 
     srand(time(NULL));
 
@@ -153,7 +153,7 @@ int main(void) {
         // BUBBLE SORT
         printf("\nBUBBLE SORT - %d cycles with %d elements\n", CICLES, size);
 
-        for (cycle = 0, cycles = 0, sum = 0.0; cycle < CICLES; cycle++) {
+        for (cycle = 0, cycles = 0, sum = 0; cycle < CICLES; cycle++) {
             printf("%do cycle sorting of a vector with %d elements with the booble sort algorithm : ", cycle, size);
 
             if ((vector = vector_create(size)) != NULL) {
@@ -166,13 +166,13 @@ int main(void) {
                 cycles++;
                 sum += time_diff(start, end);
 
-                printf("%lf seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
+                printf("%d seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
             } else {
                 printf(" error allocating %d bytes of memory\n", (int) (size * sizeof(int)));
             }
         }
 
-        printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a booble sort algorithm\n", size, sum / cycles);
+        printf("The sorting of a vector with %d elements took in average %d seconds to sort with a booble sort algorithm\n", size, sum / cycles);
 
         /*
         // INSERTION SORT
@@ -191,19 +191,19 @@ int main(void) {
                 cycles++;
                 sum += time_diff(start, end);
 
-                printf("%lf seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
+                printf("%d seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
             } else {
                 printf(" error allocating %d bytes of memory\n", (int) (size * sizeof(int)));
             }
         }
 
-        printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
+        printf("The sorting of a vector with %d elements took in average %d seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
         */
 
         // QUICK SORT
         printf("\nQUICK SORT - %d cycles with %d elements\n", CICLES, size);
 
-        for (cycle = 0, cycles = 0, sum = 0.0; cycle < CICLES; cycle++){
+        for (cycle = 0, cycles = 0, sum = 0; cycle < CICLES; cycle++){
             printf("%do cycle sorting of a vector with %d elements with the insertion sort algorithm : ", cycle, size);
 
             if ((vector = vector_create(size)) != NULL){
@@ -216,18 +216,18 @@ int main(void) {
                 cycles++;
                 sum += time_diff(start, end);
 
-            printf("%lf seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
+            printf("%d seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
             }
             else{
                 printf(" error allocating %d bytes of memory\n", (int) (size * sizeof(int)));
             }
         }
-        printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
+        printf("The sorting of a vector with %d elements took in average %d seconds to sort with a insertion sort algorithm\n", size, sum / cycles);
         
         // SELECTION SORT
         printf("\nSELECTION SORT - %d cycles with %d elements\n", CICLES, size);
 
-        for (cycle = 0, cycles = 0, sum = 0.0; cycle < CICLES; cycle++) {
+        for (cycle = 0, cycles = 0, sum = 0; cycle < CICLES; cycle++) {
             printf("%do cycle sorting of a vector with %d elements with the selection sort algorithm : ", cycle, size);
 
             if ((vector = vector_create(size)) != NULL) {
@@ -240,13 +240,13 @@ int main(void) {
                 cycles++;
                 sum += time_diff(start, end);
 
-                printf("%lf seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
+                printf("%d seconds (num. swaps = %d, num. compares = %d)\n", time_diff(start, end), nswap, ncompare);
             } else {
                 printf(" error allocating %d bytes of memory\n", (int) (size * sizeof(int)));
             }
         }
 
-        printf("The sorting of a vector with %d elements took in average %lf seconds to sort with a selection sort algorithm\n", size, sum / cycles);
+        printf("The sorting of a vector with %d elements took in average %d seconds to sort with a selection sort algorithm\n", size, sum / cycles);
     }
 
     return 0;
