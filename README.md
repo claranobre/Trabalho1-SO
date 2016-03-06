@@ -53,7 +53,7 @@
 - /etc/init.d/networking restart
 - **Atualizar os pacotes**
 - apt-get update
-- **Acessando o diretório do projeto: **
+- **Acessando o diretório do projeto:**
 - cd ~/Documents/Projeto1-SO/
 - make
 - ./ordenacao
