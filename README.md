@@ -1,9 +1,9 @@
-### Trabalho 1 de Sistemas Operacionais ### 
+### Trabalho 1 de Sistemas Operacionais
 
 - Esse projeto consiste em fazer uma análise temporal da execução dos algoritmos de ordenação Bubble Sort, Quick Sort e Selection Sort na placa BeagleBone Black.
 - Estamos utilizando os métodos time e clock para calcular o tempo de execução.
 
-### Como executar esse projeto ###
+# Como executar esse projeto
 
 # Computador
 - **O usuário precisa ter uma máquina Linux instalada para a execução desse projeto**
@@ -18,10 +18,8 @@
 ○ Download
 ○ http://www.qt.io/download-open-source/
 ○ Dica: fazer o download da versão offline
-■ Linux 32bits: http://download.qt.io/official_releases/qt/5.5/5.5.1/qt-
-opensource-linux-x86-5.5.1.run
-■ Linux 64bits: http://download.qt.io/official_releases/qt/5.5/5.5.1/qt-
-opensource-linux-x64-5.5.1.run
+■ Linux 32bits: http://download.qt.io/official_releases/qt/5.5/5.5.1/qt-opensource-linux-x86-5.5.1.run
+■ Linux 64bits: http://download.qt.io/official_releases/qt/5.5/5.5.1/qt-opensource-linux-x64-5.5.1.run
 ○ Instalar
 ○ chmod +x arquivobaixado
 ○ ./arquivobaixado
@@ -45,7 +43,6 @@ sudo su
 iptables --table nat --append POSTROUTING --out-interface eth0 -j MASQUERADE
 iptables --append FORWARD --in-interface eth1 -j ACCEPT
 echo 1 > /proc/sys/net/ipv4/ip_forward
-
 # BeagleBone Black (BBB)
 ○ realizar os comandos como root
 sudo su
