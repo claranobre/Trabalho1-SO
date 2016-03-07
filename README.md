@@ -1,7 +1,7 @@
 ### Trabalho 1 de Sistemas Operacionais
 //Autores: Ana Clara Nobre e Ícaro Heitor
 
-- Esse projeto consiste em fazer uma análise temporal da execução dos algoritmos de ordenação Bubble Sort, Quick Sort e Selection Sort na placa BeagleBone Black.
+- Esse projeto consiste em fazer uma análise temporal da execução dos algoritmos de ordenação Bubble Sort, Quick Sort e Selection Sort na placa BeagleBone Black e um computador.
 - Estamos utilizando os métodos time e clock para calcular o tempo de execução.
 
 ### Como executar esse projeto
