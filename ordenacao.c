@@ -4,8 +4,8 @@
 
 #define MAX 500000
 
-#define SIZE_MIN   100000
-#define SIZE_STEP  100000
+#define SIZE_MIN   5000
+#define SIZE_STEP  5000
 #define SIZE_MAX   500000
 
 #define CICLES 10
